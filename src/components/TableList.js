@@ -75,32 +75,57 @@ class TableList extends Component {
     ) : (
       <div className="table-list">
         <TableFilter />
-        <Table
-          celled
-          padded
-          style={{
-            display: "block",
-            padding: "0vw 2vw",
-            border: "0.5px solid teal",
-            background: "#fcfef9",
-            overflowY: "scroll",
-            height: "90vh"
-          }}
-        >
-          <Table.Header>
-            <Table.Row textAlign="center">
-              <Table.HeaderCell>S.No</Table.HeaderCell>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Category</Table.HeaderCell>
-              <Table.HeaderCell>Price</Table.HeaderCell>
-              <Table.HeaderCell width={2}>Add To Cart </Table.HeaderCell>
-              <Table.HeaderCell>Remove from Cart </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <React.Fragment>{this.showData()}</React.Fragment>
-          </Table.Body>
-        </Table>
+        {this.props.data.length !== 0 ? (
+          <Table
+            celled
+            padded
+            style={{
+              display: "block",
+              padding: "0vw 2vw",
+              border: "0.5px solid teal",
+              background: "#fcfef9",
+              overflowY: "scroll",
+              height: "90vh"
+            }}
+          >
+            <Table.Header>
+              <Table.Row textAlign="center">
+                <Table.HeaderCell>S.No</Table.HeaderCell>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Category</Table.HeaderCell>
+                <Table.HeaderCell>Price</Table.HeaderCell>
+                <Table.HeaderCell width={2}>Add To Cart </Table.HeaderCell>
+                <Table.HeaderCell>Remove from Cart </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <React.Fragment>{this.showData()}</React.Fragment>
+            </Table.Body>
+          </Table>
+        ) : (
+          <Segment vertical style={{ marginTop: "12vw" }}>
+            <Grid container stackable verticalAlign="middle">
+              <Grid.Row>
+                <Grid.Column width={8}>
+                  <Header as="h3" style={{ fontSize: "2em" }}>
+                    Sorry, no results found!
+                  </Header>
+                  <p style={{ fontSize: "1.33em" }}>
+                    Please check the spelling or try searching for something
+                    else
+                  </p>
+                </Grid.Column>
+                <Grid.Column floated="right" width={6}>
+                  <Image
+                    alt="emptycart"
+                    rounded
+                    src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/error-no-search-results_2353c5.png"
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Segment>
+        )}
       </div>
     );
   }
