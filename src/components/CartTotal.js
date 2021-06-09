@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import { Input } from "semantic-ui-react";
 import swal from "sweetalert";
 import { emptyCart } from "./actions/cartActions";
-import "./TableList.css";
+import "./CartTotal.css";
 
 class cartTotal extends Component {
   buyHandler = (price, noOfItems) => {
-    console.log(price, noOfItems);
     swal({
       title: "Please confirm your order ",
       text: "Price(" + noOfItems + " items):   " + price,

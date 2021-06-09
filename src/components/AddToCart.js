@@ -8,7 +8,6 @@ class AddToCart extends Component {
     this.props.subtractQuantity(id);
   };
   handleAddToCartClick = id => {
-    console.log("clicked");
     this.props.addToCart(id);
   };
 
