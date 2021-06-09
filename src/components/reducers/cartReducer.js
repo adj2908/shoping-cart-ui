@@ -6,7 +6,8 @@ import {
   LOAD_DATA_LOADING,
   DROPDOWN_FILTER,
   SEARCH_FILTER,
-  LOAD_FAILURE
+  LOAD_FAILURE,
+  EMPTY_CART
 } from "../actions/action-types/cart-actions";
 
 const initState = {
@@ -105,6 +106,13 @@ const cartReducer = (state = initState, action) => {
         total: newTotal
       };
     }
+  }
+
+  if (action.type === EMPTY_CART) {
+    return {
+      ...state,
+      addedItems: []
+    };
   }
   if (action.type === DROPDOWN_FILTER) {
     if (action.id === "") {

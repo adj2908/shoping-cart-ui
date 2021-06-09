@@ -2,15 +2,28 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Input } from "semantic-ui-react";
 import swal from "sweetalert";
+import { emptyCart } from "./actions/cartActions";
+import "./TableList.css";
 
 class cartTotal extends Component {
-  buyHandler = () => {
-    console.log("cccc");
+  buyHandler = (price, noOfItems) => {
+    console.log(price, noOfItems);
     swal({
-      title: "Good job!",
-      text: "You clicked the button!",
-      icon: "success",
-      button: "Aww yiss!"
+      title: "Please confirm your order ",
+      text: "Price(" + noOfItems + " items):   " + price,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    }).then(willDelete => {
+      if (willDelete) {
+        swal({
+          title: "Order Confirmed",
+          text: "Thanks for shopping with us",
+          icon: "success",
+          button: "Aww yiss!"
+        });
+        this.props.emptyCart();
+      }
     });
   };
   render() {
@@ -26,13 +39,15 @@ class cartTotal extends Component {
             color: "teal",
             labelPosition: "left",
             icon: "cart",
-            content: "Proceed to buy"
+            content: "Proceed to buy",
+            onClick: () =>
+              this.buyHandler(
+                this.props.total.toFixed(2),
+                this.props.cartItems.length
+              )
           }}
           actionPosition="left"
           value={"$ " + this.props.total.toFixed(2)}
-          onClick={() => {
-            this.buyHandler();
-          }}
         />
       </div>
     );
@@ -41,8 +56,20 @@ class cartTotal extends Component {
 
 const mapStateToProps = state => {
   return {
-    total: state.cartProducts.total
+    total: state.cartProducts.total,
+    cartItems: state.cartProducts.addedItems
   };
 };
 
-export default connect(mapStateToProps)(cartTotal);
+const mapDispatchToProps = dispatch => {
+  return {
+    emptyCart: () => {
+      dispatch(emptyCart());
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(cartTotal);

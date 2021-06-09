@@ -7,3 +7,4 @@ export const SUB_QUANTITY = "SUB_QUANTITY";
 export const DROPDOWN_FILTER = "DROPDOWN_FILTER";
 export const SEARCH_FILTER = "SEARCH_FILTER";
 export const LOAD_FAILURE = "LOAD_FAILURE";
+export const EMPTY_CART = "EMPTY_CART";

@@ -6,7 +6,8 @@ import {
   LOAD_DATA_LOADING,
   DROPDOWN_FILTER,
   SEARCH_FILTER,
-  LOAD_FAILURE
+  LOAD_FAILURE,
+  EMPTY_CART
 } from "./action-types/cart-actions";
 
 import axios from "axios";
@@ -15,7 +16,7 @@ export const loadData = () => {
   return async dispatch => {
     dispatch({ type: LOAD_DATA_LOADING });
     return await axios
-      .get("https://mocki.io/v1/cc27e873-10f3-4dd0-927b-5d0a29247269")
+      .get("https://muigrocery.free.beeceptor.com/groceries")
       .then(
         response => {
           dispatch({ type: LOAD_DATA_LOADED, response });
@@ -57,5 +58,11 @@ export const searchFilter = id => {
   return {
     type: SEARCH_FILTER,
     id // payload
+  };
+};
+
+export const emptyCart = () => {
+  return {
+    type: EMPTY_CART
   };
 };
