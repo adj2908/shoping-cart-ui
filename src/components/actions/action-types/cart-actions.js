@@ -1,0 +1,9 @@
+export const LOAD_DATA = "LOAD_DATA";
+export const LOAD_DATA_LOADED = "LOAD_DATA_LOADED";
+export const LOAD_DATA_LOADING = "LOAD_DATA_LOADING";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_ITEM = "REMOVE_ITEM";
+export const SUB_QUANTITY = "SUB_QUANTITY";
+export const DROPDOWN_FILTER = "DROPDOWN_FILTER";
+export const SEARCH_FILTER = "SEARCH_FILTER";
+export const LOAD_FAILURE = "LOAD_FAILURE";

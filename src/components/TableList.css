@@ -1,0 +1,14 @@
+.table-list {
+  margin-top: 5vw;
+}
+@media (min-width: 414px) and (max-width: 767px) {
+  .table-list {
+    margin-top: 10vw;
+  }
+}
+
+@media (max-width: 414px) {
+  .table-list {
+    margin-top: 15vw;
+  }
+}
